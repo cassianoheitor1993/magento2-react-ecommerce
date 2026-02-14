@@ -355,16 +355,16 @@ return [
         'Magento_WishlistAnalytics' => 1,
         'Magento_WishlistGraphQl' => 1,
         'Learning_HelloWorld' => 1,
-        'Petshop_Blog' => 1,
-        'Petshop_Homepage' => 1,
-        'Petshop_Marketing' => 1,
-        'Petshop_SampleData' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeCustomerBalance' => 1,
         'PayPal_BraintreeGiftCard' => 1,
         'PayPal_BraintreeGiftCardAccount' => 1,
         'PayPal_BraintreeGiftWrapping' => 1,
         'PayPal_BraintreeGraphQl' => 1,
-        'PayPal_BraintreeReward' => 1
+        'PayPal_BraintreeReward' => 1,
+        'Petshop_Blog' => 1,
+        'Petshop_Homepage' => 1,
+        'Petshop_Marketing' => 1,
+        'Petshop_SampleData' => 1
     ]
 ];
