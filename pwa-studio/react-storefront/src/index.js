@@ -34,7 +34,7 @@ const setupChunkLoadRecovery = () => {
         return;
     }
 
-    const CHUNK_RELOAD_KEY = 'leispet_chunk_reload_attempted';
+    const CHUNK_RELOAD_KEY = 'petshop_chunk_reload_attempted';
 
     globalThis.addEventListener('error', event => {
         const message =

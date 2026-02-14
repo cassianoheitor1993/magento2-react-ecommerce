@@ -1,4 +1,4 @@
-# 🐾 LeisPet — Magento 2 + PWA Studio E-Commerce
+# 🐾 Petshop — Magento 2 + PWA Studio E-Commerce
 
 A full-stack pet e-commerce platform built with **Magento 2 Open Source 2.4.7** (backend) and **PWA Studio** (React headless storefront), orchestrated with Docker Compose.
 
@@ -20,7 +20,7 @@ A full-stack pet e-commerce platform built with **Magento 2 Open Source 2.4.7** 
                      │ GraphQL
 ┌────────────────────▼─────────────────────────────┐
 │              Magento 2 Open Source                │
-│           magento2/app/code/LeisPet/             │
+│           magento2/app/code/Petshop/             │
 │  Homepage · Blog · Marketing · SampleData        │
 ├──────────────────────────────────────────────────┤
 │  Nginx │ PHP-FPM 8.3 │ MariaDB │ OpenSearch     │
@@ -32,10 +32,10 @@ A full-stack pet e-commerce platform built with **Magento 2 Open Source 2.4.7** 
 
 | Module | Description |
 |--------|-------------|
-| **LeisPet_Homepage** | AI-powered homepage builder with drag-and-drop widget system (hero, CTA, trust badges, categories carousel, testimonials, newsletter). Admin UI for layout config + OpenAI content generation. |
-| **LeisPet_Blog** | CMS blog engine with categories, posts, and SEO metadata |
-| **LeisPet_Marketing** | Newsletter, email campaigns, and promotional tools |
-| **LeisPet_SampleData** | Seed data for demo/dev environments |
+| **Petshop_Homepage** | AI-powered homepage builder with drag-and-drop widget system (hero, CTA, trust badges, categories carousel, testimonials, newsletter). Admin UI for layout config + OpenAI content generation. |
+| **Petshop_Blog** | CMS blog engine with categories, posts, and SEO metadata |
+| **Petshop_Marketing** | Newsletter, email campaigns, and promotional tools |
+| **Petshop_SampleData** | Seed data for demo/dev environments |
 
 ## 🚀 Quick Start
 
@@ -48,8 +48,8 @@ A full-stack pet e-commerce platform built with **Magento 2 Open Source 2.4.7** 
 ### 1. Clone & configure
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/magento2-leispet.git
-cd magento2-leispet
+git clone https://github.com/YOUR_USERNAME/magento2-petshop.git
+cd magento2-petshop
 
 # Create auth.json from template (add your Marketplace keys)
 cp auth.json.sample auth.json
@@ -72,7 +72,7 @@ This will:
 ### 3. Install custom modules
 
 ```bash
-./magento.sh module:enable LeisPet_Homepage LeisPet_Blog LeisPet_Marketing LeisPet_SampleData
+./magento.sh module:enable Petshop_Homepage Petshop_Blog Petshop_Marketing Petshop_SampleData
 ./magento.sh setup:upgrade
 ./magento.sh setup:di:compile
 ./magento.sh cache:flush
@@ -103,7 +103,7 @@ npm run watch
 ## 🗂️ Project Structure
 
 ```
-magento2-leispet/
+magento2-petshop/
 ├── docker-compose.yml          # Dev services (7 containers)
 ├── setup.sh                    # One-command Magento install
 ├── magento.sh                  # CLI helper (e.g. ./magento.sh cache:flush)
@@ -114,7 +114,7 @@ magento2-leispet/
 │   ├── composer.json           # PHP dependencies
 │   ├── composer.lock
 │   ├── app/
-│   │   ├── code/LeisPet/       # ⭐ Custom modules
+│   │   ├── code/Petshop/       # ⭐ Custom modules
 │   │   │   ├── Homepage/       #   AI homepage builder
 │   │   │   ├── Blog/           #   Blog engine
 │   │   │   ├── Marketing/      #   Marketing tools

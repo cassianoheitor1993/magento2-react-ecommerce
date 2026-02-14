@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Petshop\Blog\Block\Adminhtml\Post\Edit\AiAssistant"
+                   name="petshop_blog_post_ai_assistant"
+                   template="Petshop_Blog::post/edit/ai_assistant.phtml"/>
+            <block class="Petshop\Blog\Block\Adminhtml\Post\Edit" name="petshop_blog_post_edit">
+                <block class="Petshop\Blog\Block\Adminhtml\Post\Edit\Form" name="form" as="form"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

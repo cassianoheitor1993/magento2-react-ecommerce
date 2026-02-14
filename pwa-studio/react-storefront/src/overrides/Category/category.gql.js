@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const CATEGORY_FRAGMENT = gql`
-    fragment LeisPetCategoryFragment on CategoryTree {
+    fragment PetshopCategoryFragment on CategoryTree {
         uid
         name
         meta_title
@@ -18,7 +18,7 @@ export const CATEGORY_FRAGMENT = gql`
 `;
 
 export const PRODUCTS_FRAGMENT = gql`
-    fragment LeisPetProductsFragment on Products {
+    fragment PetshopProductsFragment on Products {
         aggregations {
             attribute_code
             label
@@ -87,7 +87,7 @@ export const GET_CATEGORY = gql`
         categories(filters: { category_uid: { in: [$id] } }) {
             items {
                 uid
-                ...LeisPetCategoryFragment
+                ...PetshopCategoryFragment
             }
         }
         products(
@@ -96,7 +96,7 @@ export const GET_CATEGORY = gql`
             filter: $filters
             sort: $sort
         ) {
-            ...LeisPetProductsFragment
+            ...PetshopProductsFragment
         }
     }
     ${CATEGORY_FRAGMENT}

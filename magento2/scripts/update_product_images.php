@@ -71,7 +71,7 @@ function isUrlAvailable(string $url): bool
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT => 20,
         CURLOPT_CONNECTTIMEOUT => 8,
-        CURLOPT_USERAGENT => 'LeisPetImageSeeder/1.0'
+        CURLOPT_USERAGENT => 'PetshopImageSeeder/1.0'
     ]);
 
     curl_exec($ch);
@@ -95,7 +95,7 @@ function downloadImage(string $url, string $targetPath): bool
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_TIMEOUT => 40,
         CURLOPT_CONNECTTIMEOUT => 10,
-        CURLOPT_USERAGENT => 'LeisPetImageSeeder/1.0'
+        CURLOPT_USERAGENT => 'PetshopImageSeeder/1.0'
     ]);
 
     $ok = curl_exec($ch);
@@ -134,14 +134,14 @@ foreach (IMAGE_POOL as $pool => $urls) {
     }
 }
 
-$tmpDir = BP . '/pub/media/import/leispet-images';
+$tmpDir = BP . '/pub/media/import/petshop-images';
 if (!is_dir($tmpDir) && !mkdir($tmpDir, 0775, true) && !is_dir($tmpDir)) {
     throw new RuntimeException('Could not create temp directory: ' . $tmpDir);
 }
 
 $collection = $collectionFactory->create();
 $collection->addAttributeToSelect(['name', 'sku'])
-    ->addAttributeToFilter('sku', ['like' => 'leispet-%'])
+    ->addAttributeToFilter('sku', ['like' => 'petshop-%'])
     ->setOrder('entity_id', 'ASC');
 
 if ($limit !== null && $limit > 0) {

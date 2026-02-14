@@ -91,7 +91,7 @@ const Header = props => {
     ) : null;
 
     const { formatMessage } = useIntl();
-    const title = formatMessage({ id: 'logo.title', defaultMessage: 'LeisPet' });
+    const title = formatMessage({ id: 'logo.title', defaultMessage: 'Petshop' });
     const homeLabel = formatMessage({
         id: 'navigation.home',
         defaultMessage: 'Home'

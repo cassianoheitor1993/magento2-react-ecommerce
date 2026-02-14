@@ -1,8 +1,8 @@
-# LeisPet Marketing Module — Implementation Plan (Self-Implementation)
+# Petshop Marketing Module — Implementation Plan (Self-Implementation)
 
 ## 1) Goal
 
-Build a new Magento 2 module `LeisPet_Marketing` to run native email marketing with async processing, progress recovery after page refresh, and campaign analytics.
+Build a new Magento 2 module `Petshop_Marketing` to run native email marketing with async processing, progress recovery after page refresh, and campaign analytics.
 
 ---
 
@@ -57,12 +57,12 @@ Build a new Magento 2 module `LeisPet_Marketing` to run native email marketing w
 ## 5) Module Skeleton
 
 Create:
-- `app/code/LeisPet/Marketing/registration.php`
-- `app/code/LeisPet/Marketing/etc/module.xml`
-- `app/code/LeisPet/Marketing/composer.json`
+- `app/code/Petshop/Marketing/registration.php`
+- `app/code/Petshop/Marketing/etc/module.xml`
+- `app/code/Petshop/Marketing/composer.json`
 
 Enable:
-- `bin/magento module:enable LeisPet_Marketing`
+- `bin/magento module:enable Petshop_Marketing`
 - `bin/magento setup:upgrade`
 - `bin/magento cache:flush`
 
@@ -72,7 +72,7 @@ Enable:
 
 Create tables in `etc/db_schema.xml`:
 
-1. `leispet_marketing_campaign`
+1. `petshop_marketing_campaign`
 - `campaign_id` PK
 - `name`, `status`, `subject`, `sender_name`, `sender_email`
 - `template_identifier`
@@ -82,7 +82,7 @@ Create tables in `etc/db_schema.xml`:
 - counters: `total_recipients`, `processed_count`, `sent_count`, `failed_count`
 - timestamps
 
-2. `leispet_marketing_campaign_job`
+2. `petshop_marketing_campaign_job`
 - `job_id` PK
 - `campaign_id` FK
 - `recipient_email`, `recipient_name`, `recipient_type`
@@ -91,7 +91,7 @@ Create tables in `etc/db_schema.xml`:
 - `message_id`, `processed_at`
 - unique key (`campaign_id`,`recipient_email`) for idempotency
 
-3. `leispet_marketing_event`
+3. `petshop_marketing_event`
 - `event_id` PK
 - `campaign_id`, `job_id`
 - `event_type` (open|click|bounce|unsubscribe)
@@ -180,7 +180,7 @@ Implement in a dedicated service:
   - `Controller/Track/Open.php?c=...&j=...`
 - Click redirect endpoint:
   - `Controller/Track/Click.php?c=...&j=...&u=...`
-- Persist events in `leispet_marketing_event`
+- Persist events in `petshop_marketing_event`
 
 ---
 
@@ -233,7 +233,7 @@ From project root:
 - `bin/magento indexer:reindex`
 
 Run consumer:
-- `bin/magento queue:consumers:start leispet.marketing.campaign.send`
+- `bin/magento queue:consumers:start petshop.marketing.campaign.send`
 
 Watch logs:
 - `tail -f var/log/system.log var/log/exception.log`

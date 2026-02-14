@@ -1,0 +1,53 @@
+<?php
+/** @var \Petshop\Marketing\Block\Adminhtml\Campaign\Edit\AiAssistant $block */
+?>
+<div id="petshop-marketing-ai-assistant" data-config='<?= $block->escapeHtmlAttr($block->getConfigJson()) ?>'>
+    <div class="admin__fieldset-wrapper-content">
+        <div class="admin__field">
+            <label class="admin__field-label"><span><?= $block->escapeHtml(__('AI Campaign Suggestions')) ?></span></label>
+            <div class="admin__field-control">
+                <button id="petshop-ai-load-suggestions" type="button" class="action-secondary">
+                    <span><?= $block->escapeHtml(__('Get 5 AI Suggestions')) ?></span>
+                </button>
+                <div id="petshop-ai-campaign-status" class="petshop-ai-campaign-status" style="display:none;"></div>
+                <div id="petshop-ai-campaign-results" class="petshop-ai-campaign-results"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.petshop-ai-campaign-status {
+    margin-top: 10px;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background: #f5f8fa;
+    border: 1px solid #d6e0ea;
+}
+.petshop-ai-campaign-results {
+    margin-top: 12px;
+}
+.petshop-ai-campaign-card {
+    border: 1px solid #d6dfe8;
+    border-radius: 6px;
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.petshop-ai-campaign-card-title {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.petshop-ai-campaign-card-reason {
+    color: #5d6d7e;
+    margin: 6px 0 8px;
+}
+</style>
+
+<script type="text/x-magento-init">
+{
+    "#petshop-marketing-ai-assistant": {
+        "Petshop_Marketing/js/ai-campaign-assistant": {}
+    }
+}
+</script>

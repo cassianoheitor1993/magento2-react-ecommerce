@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Petshop_Homepage::homepage"
+             title="Petshop Homepage"
+             module="Petshop_Homepage"
+             sortOrder="95"
+             resource="Petshop_Homepage::homepage"/>
+
+        <add id="Petshop_Homepage::widgets"
+             title="Homepage Widgets"
+             module="Petshop_Homepage"
+             sortOrder="10"
+             parent="Petshop_Homepage::homepage"
+             action="petshop_homepage/widget/index"
+             resource="Petshop_Homepage::widgets"/>
+    </menu>
+</config>

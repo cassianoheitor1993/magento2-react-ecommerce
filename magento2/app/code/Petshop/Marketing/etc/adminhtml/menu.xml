@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Petshop_Marketing::marketing"
+             title="Petshop Marketing"
+             module="Petshop_Marketing"
+             sortOrder="90"
+             resource="Petshop_Marketing::marketing"/>
+
+        <add id="Petshop_Marketing::campaigns"
+             title="Email Campaigns"
+             module="Petshop_Marketing"
+             sortOrder="10"
+             parent="Petshop_Marketing::marketing"
+             action="petshop_marketing/campaign/index"
+             resource="Petshop_Marketing::campaigns"/>
+    </menu>
+</config>

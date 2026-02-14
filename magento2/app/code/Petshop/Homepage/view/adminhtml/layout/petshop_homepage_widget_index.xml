@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Petshop_Homepage::css/widget-index.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Petshop\Homepage\Block\Adminhtml\Widget\CreateModal"
+                   name="petshop_homepage_widget_create_modal"
+                   template="Petshop_Homepage::widget/create_modal.phtml"
+                   before="-"/>
+            <uiComponent name="petshop_homepage_widget_listing"/>
+        </referenceContainer>
+    </body>
+</page>

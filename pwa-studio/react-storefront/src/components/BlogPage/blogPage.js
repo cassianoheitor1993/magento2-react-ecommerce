@@ -224,7 +224,7 @@ const BlogPage = props => {
                         </div>
                         <h1 className={classes.detailTitle}>{post.title}</h1>
                         <p className={classes.postMeta}>
-                            {post.author || 'LeisPet Team'} {' • '} {formatDate(post.created_at)}
+                            {post.author || 'Petshop Team'} {' • '} {formatDate(post.created_at)}
                         </p>
                         {post.excerpt ? (
                             <div
@@ -248,7 +248,7 @@ const BlogPage = props => {
 
     return (
         <div className={classes.root}>
-            <h1 className={classes.title}>LeisPet Blog</h1>
+            <h1 className={classes.title}>Petshop Blog</h1>
             <p className={classes.subtitle}>Dicas, guias e novidades para quem ama pets.</p>
 
             <div className={classes.layout}>
@@ -264,7 +264,7 @@ const BlogPage = props => {
                                     </Link>
                                 </h2>
                                 <p className={classes.postMeta}>
-                                    {postItem.author || 'LeisPet Team'} {' • '}
+                                    {postItem.author || 'Petshop Team'} {' • '}
                                     {formatDate(postItem.created_at)}
                                 </p>
                                 {postItem.excerpt ? (

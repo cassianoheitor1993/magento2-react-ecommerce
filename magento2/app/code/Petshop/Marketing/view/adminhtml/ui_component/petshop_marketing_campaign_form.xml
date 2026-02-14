@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">petshop_marketing_campaign_form.petshop_marketing_campaign_form_data_source</item>
+		</item>
+		<item name="label" xsi:type="string" translate="true">Campaign</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+
+	<settings>
+		<buttons>
+			<button name="back" class="Petshop\Marketing\Block\Adminhtml\Campaign\Edit\BackButton"/>
+			<button name="save" class="Petshop\Marketing\Block\Adminhtml\Campaign\Edit\SaveButton"/>
+		</buttons>
+		<namespace>petshop_marketing_campaign_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>petshop_marketing_campaign_form.petshop_marketing_campaign_form_data_source</dep>
+		</deps>
+	</settings>
+
+	<dataSource name="petshop_marketing_campaign_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="petshop_marketing/campaign/save"/>
+		</settings>
+		<dataProvider class="Petshop\Marketing\Model\Campaign\DataProvider"
+					  name="petshop_marketing_campaign_form_data_source">
+			<settings>
+				<requestFieldName>campaign_id</requestFieldName>
+				<primaryFieldName>campaign_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+
+	<fieldset name="general">
+		<settings>
+			<label translate="true">General</label>
+		</settings>
+
+		<field name="campaign_id" sortOrder="10" formElement="input">
+			<settings>
+				<label translate="true">ID</label>
+				<dataType>number</dataType>
+				<dataScope>campaign_id</dataScope>
+				<disabled>true</disabled>
+				<visible>false</visible>
+			</settings>
+		</field>
+
+		<field name="name" sortOrder="20" formElement="input">
+			<settings>
+				<label translate="true">Name</label>
+				<dataType>text</dataType>
+				<dataScope>name</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+
+		<field name="subject" sortOrder="30" formElement="input">
+			<settings>
+				<label translate="true">Subject</label>
+				<dataType>text</dataType>
+				<dataScope>subject</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+
+		<field name="sender_name" sortOrder="40" formElement="input">
+			<settings>
+				<label translate="true">Sender Name</label>
+				<dataType>text</dataType>
+				<dataScope>sender_name</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+
+		<field name="sender_email" sortOrder="50" formElement="input">
+			<settings>
+				<label translate="true">Sender Email</label>
+				<dataType>text</dataType>
+				<dataScope>sender_email</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+					<rule name="validate-email" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+
+		<field name="template_identifier" sortOrder="60" formElement="input">
+			<settings>
+				<label translate="true">Template Identifier</label>
+				<dataType>text</dataType>
+				<dataScope>template_identifier</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+
+		<field name="audience_type" sortOrder="70" formElement="input">
+			<settings>
+				<label translate="true">Audience Type</label>
+				<dataType>text</dataType>
+				<dataScope>audience_type</dataScope>
+				<notice translate="true">Use "newsletter" (currently supported audience).</notice>
+			</settings>
+		</field>
+
+		<field name="audience_filter_json" sortOrder="80" formElement="textarea">
+			<settings>
+				<label translate="true">Audience Filter JSON</label>
+				<dataType>text</dataType>
+				<dataScope>audience_filter_json</dataScope>
+				<notice translate="true">Optional. Example: {"email_like":"%@example.com"}</notice>
+			</settings>
+		</field>
+	</fieldset>
+</form>

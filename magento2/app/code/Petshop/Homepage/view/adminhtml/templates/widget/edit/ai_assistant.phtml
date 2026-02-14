@@ -1,0 +1,44 @@
+<?php
+/** @var \Petshop\Homepage\Block\Adminhtml\Widget\Edit\AiAssistant $block */
+?>
+<link rel="stylesheet" type="text/css" href="<?= $block->getViewFileUrl('Petshop_Homepage::css/widget-config-editor.css') ?>" />
+
+<div id="petshop-homepage-widget-ai" data-config='<?= $block->escapeHtmlAttr($block->getConfigJson()) ?>'>
+    <div class="admin__fieldset-wrapper-content">
+        <div class="admin__field">
+            <label class="admin__field-label" for="petshop-widget-ai-context">
+                <span><?= $block->escapeHtml(__('AI Context')) ?></span>
+            </label>
+            <div class="admin__field-control">
+                <textarea id="petshop-widget-ai-context" class="admin__control-textarea" rows="4" placeholder="<?= $block->escapeHtmlAttr(__('Describe campaign goal, audience, tone, and offer...')) ?>"></textarea>
+            </div>
+        </div>
+
+        <div class="admin__field">
+            <div class="admin__field-control">
+                <button id="petshop-widget-ai-generate" type="button" class="action-secondary">
+                    <span><?= $block->escapeHtml(__('Generate Content with AI')) ?></span>
+                </button>
+                <p class="note"><span><?= $block->escapeHtml(__('Generation fills the visual editor below according to the selected widget type contract.')) ?></span></p>
+                <div id="petshop-widget-ai-status" style="margin-top:8px; display:none;"></div>
+            </div>
+        </div>
+
+        <div class="admin__field" id="petshop-widget-config-editor-field" style="margin-top:12px;">
+            <label class="admin__field-label">
+                <span><?= $block->escapeHtml(__('Widget Content Editor')) ?></span>
+            </label>
+            <div class="admin__field-control">
+                <div id="petshop-widget-edit-config-editor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "#petshop-homepage-widget-ai": {
+        "Petshop_Homepage/js/widget-ai-assistant": {}
+    }
+}
+</script>

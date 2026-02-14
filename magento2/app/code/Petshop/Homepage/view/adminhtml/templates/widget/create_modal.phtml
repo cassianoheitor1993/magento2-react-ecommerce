@@ -1,0 +1,196 @@
+<?php
+/** @var \Petshop\Homepage\Block\Adminhtml\Widget\CreateModal $block */
+?>
+<div id="petshop-homepage-create-widget" data-config='<?= $block->escapeHtmlAttr($block->getConfigJson()) ?>'>
+    <style>
+        #petshop-create-widget-modal .petshop-schedule-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        #petshop-create-widget-modal .petshop-schedule-fields {
+            border: 1px solid #d6d6d6;
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        #petshop_schedule_fields{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin__field.field{
+            margin-top: 0 !important;
+        }
+
+        .admin__legend{
+            margin-bottom: 0 !important;
+        }
+
+        .label.admin__field-label.scheduling{
+            text-align: left !important;
+            margin-top: 1rem !important;
+        }
+
+        #petshop-create-widget-modal .petshop-schedule-row .admin__field {
+            flex: 1 1 300px;
+            margin-right: 0;
+        }
+
+        #petshop-create-widget-modal .petshop-schedule-row .admin__field-label,
+        #petshop-create-widget-modal .petshop-schedule-row .admin__field-control {
+            width: 100%;
+            margin-left: 0;
+            float: none;
+        }
+
+        #petshop-create-widget-modal .petshop-schedule-row .admin__field-control {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+        }
+
+        #petshop-create-widget-modal .petshop-schedule-row .admin__control-text {
+            width: auto;
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        #petshop-create-widget-modal .admin__field-control .ui-datepicker-trigger {
+            position: static !important;
+            margin-left: 6px;
+            flex: 0 0 auto;
+            white-space: nowrap;
+        }
+
+        #petshop-create-widget-modal .admin__field-control .ui-datepicker-trigger span {
+            pointer-events: none;
+        }
+
+        @media (max-width: 1024px) {
+            #petshop-create-widget-modal .petshop-schedule-row {
+                display: block;
+            }
+
+            #petshop-create-widget-modal .petshop-schedule-row .admin__field {
+                margin-bottom: 12px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="<?= $block->getViewFileUrl('Petshop_Homepage::css/widget-config-editor.css') ?>" />
+
+    <button type="button" class="action-primary" id="petshop-open-create-widget-modal">
+        <span><?= $block->escapeHtml(__('Add Widget')) ?></span>
+    </button>
+
+    <div id="petshop-create-widget-modal" style="display:none;">
+        <div id="petshop-widget-modal-errors" class="message message-error" style="display:none; margin-bottom: 12px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+                <div id="petshop-widget-modal-errors-content"></div>
+                <button id="petshop-widget-modal-errors-close" type="button" class="action-secondary">
+                    <span><?= $block->escapeHtml(__('Dismiss')) ?></span>
+                </button>
+            </div>
+        </div>
+
+        <div id="petshop-widget-modal-success" class="message message-success" style="display:none; margin-bottom: 12px;"></div>
+
+        <form id="petshop-create-widget-form" method="post">
+            <input type="hidden" name="form_key" value="<?= $block->escapeHtmlAttr($block->getFormKey()) ?>" />
+            <input type="hidden" name="widget_id" id="petshop_widget_id" value="" />
+            <input type="hidden" name="config_json" id="petshop_config_json" value="" />
+
+            <div class="admin__field field">
+                <label class="label admin__field-label" for="petshop_widget_title"><span><?= $block->escapeHtml(__('Title')) ?></span></label>
+                <div class="control admin__field-control">
+                    <input class="admin__control-text" type="text" name="title" id="petshop_widget_title" placeholder="<?= $block->escapeHtmlAttr(__('Auto-generated from widget type if left empty')) ?>" />
+                </div>
+            </div>
+
+            <div class="admin__field field">
+                <label class="label admin__field-label" for="petshop_widget_type"><span><?= $block->escapeHtml(__('Widget Type')) ?></span></label>
+                <div class="control admin__field-control">
+                    <select class="admin__control-select" name="widget_type" id="petshop_widget_type" required>
+                        <option value=""><?= $block->escapeHtml(__('Select widget type')) ?></option>
+                        <option value="trust_badges"><?= $block->escapeHtml(__('Trust Badges')) ?></option>
+                        <option value="testimonials"><?= $block->escapeHtml(__('Testimonials')) ?></option>
+                        <option value="cta"><?= $block->escapeHtml(__('CTA')) ?></option>
+                        <option value="categories_carousel"><?= $block->escapeHtml(__('Categories Carousel')) ?></option>
+                        <option value="newsletter"><?= $block->escapeHtml(__('Newsletter')) ?></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="admin__field field">
+                <label class="label admin__field-label" for="petshop_widget_context"><span><?= $block->escapeHtml(__('Widget Context for AI')) ?></span></label>
+                <div class="control admin__field-control">
+                    <textarea class="admin__control-textarea" name="context" id="petshop_widget_context" rows="4" placeholder="<?= $block->escapeHtmlAttr(__('Describe goal, audience, tone, and campaign context...')) ?>"></textarea>
+                    <p class="note"><span><?= $block->escapeHtml(__('Generate content first. Scheduling will be enabled only after successful generation.')) ?></span></p>
+                    <button type="button" class="action-secondary" id="petshop_generate_widget_content">
+                        <span><?= $block->escapeHtml(__('Generate Content with AI')) ?></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="admin__field field" id="petshop_config_editor_wrapper" style="display:none;">
+                <label class="label admin__field-label"><span><?= $block->escapeHtml(__('Widget Content')) ?></span></label>
+                <div class="control admin__field-control">
+                    <div id="petshop_config_editor"></div>
+                </div>
+            </div>
+
+            <div id="petshop_schedule_fields" class="admin__field field" disabled>
+                <label class="label admin__field-label scheduling" for="petshop_starts_at">
+                    <span><?= $block->escapeHtml(__('Scheduling')) ?></span>
+                </label>
+                <fieldset class="petshop-schedule-fields">
+                    <div id="petshop-schedule-validation-hint" class="message" style="display:none; margin-bottom: 10px;"></div>
+
+                    <div class="petshop-schedule-row">
+                        <div class="admin__field field">
+                            <label class="label admin__field-label" for="petshop_starts_at"><span><?= $block->escapeHtml(__('Visible From')) ?></span></label>
+                            <div class="control admin__field-control">
+                                <input class="admin__control-text" type="text" name="starts_at" id="petshop_starts_at" placeholder="YYYY-MM-DD HH:MM:SS" />
+                            </div>
+                        </div>
+
+                        <div class="admin__field field">
+                            <label class="label admin__field-label" for="petshop_ends_at"><span><?= $block->escapeHtml(__('Visible Until')) ?></span></label>
+                            <div class="control admin__field-control">
+                                <input class="admin__control-text" type="text" name="ends_at" id="petshop_ends_at" placeholder="YYYY-MM-DD HH:MM:SS" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin__field field">
+                        <label class="label admin__field-label" for="petshop_is_active"><span><?= $block->escapeHtml(__('Activate Now')) ?></span></label>
+                        <div class="control admin__field-control">
+                            <select class="admin__control-select" name="is_active" id="petshop_is_active">
+                                <option value="1"><?= $block->escapeHtml(__('Yes')) ?></option>
+                                <option value="0"><?= $block->escapeHtml(__('No')) ?></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin__field field">
+                        <label class="label admin__field-label" for="petshop_sort_order"><span><?= $block->escapeHtml(__('Sort Order')) ?></span></label>
+                        <div class="control admin__field-control">
+                            <input class="admin__control-text" type="number" name="sort_order" id="petshop_sort_order" value="0" min="0" />
+                            <p class="note"><span><?= $block->escapeHtml(__('0 = auto-assign next available position')) ?></span></p>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "#petshop-homepage-create-widget": {
+        "Petshop_Homepage/js/widget-create-modal": {}
+    }
+}
+</script>

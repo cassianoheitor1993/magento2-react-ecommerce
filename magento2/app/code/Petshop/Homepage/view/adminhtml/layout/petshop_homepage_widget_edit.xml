@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="admin-1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="petshop_homepage_widget_form"/>
+            <block class="Petshop\Homepage\Block\Adminhtml\Widget\Edit\AiAssistant"
+                   name="petshop_homepage_widget_ai_assistant"
+                   template="Petshop_Homepage::widget/edit/ai_assistant.phtml"
+                   after="-"/>
+        </referenceContainer>
+    </body>
+</page>
