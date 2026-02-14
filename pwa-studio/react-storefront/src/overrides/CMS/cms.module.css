@@ -1,0 +1,11 @@
+/* Break the homepage article out of the .page max-width wrapper
+   so the hero can span the full viewport. Widgets get their
+   own padding via HomeRevamp's .widgetsContainer. */
+.homeArticle {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    box-sizing: border-box;
+}

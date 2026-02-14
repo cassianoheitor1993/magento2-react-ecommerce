@@ -1,0 +1,61 @@
+.homeItemWrapper {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0;
+}
+
+.homeItemLink {
+    display: block;
+    color: #111827;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.9rem 1rem;
+}
+
+.homeItemLink:hover,
+.homeItemLink:focus-visible {
+    background: #f9fafb;
+}
+
+.homeItemLinkActive {
+    background: #eef2ff;
+    color: var(--venia-global-color-teal);
+}
+
+.homeSubItemLink {
+    padding-left: 2rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.homeSubSubItemLink {
+    padding-left: 2.9rem;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.homeCollapsible {
+    border-top: 1px solid #f1f5f9;
+}
+
+.homeCollapsibleSummary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.homeCollapsibleSummary::-webkit-details-marker {
+    display: none;
+}
+
+.homeCollapsibleSummary::after {
+    content: '▸';
+    float: right;
+    color: #6b7280;
+}
+
+.homeCollapsible[open] .homeCollapsibleSummary::after {
+    content: '▾';
+}
+
+.homeCollapsibleContent {
+    display: grid;
+}

@@ -1,0 +1,44 @@
+/* Scope to LeisPet homepage widgets admin page, with robust fallbacks */
+.adminhtml-leispet-homepage-widget-index .admin__data-grid-wrap,
+body[class*="leispet_homepage_widget"] .admin__data-grid-wrap,
+body[class*="leispet-homepage-widget"] .admin__data-grid-wrap,
+[data-index="leispet_homepage_widget_listing"] .admin__data-grid-wrap,
+#leispet_homepage_widget_listing .admin__data-grid-wrap {
+    min-height: 250px !important;
+    padding-bottom: 180px;
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+/* Target the real KO-rendered listing wrapper to guarantee min height is applied */
+.admin__data-grid-outer-wrap[data-bind*="leispet_homepage_widget_listing"] .admin__data-grid-wrap {
+    min-height: 250px !important;
+    padding-bottom: 180px !important;
+    overflow-y: visible !important;
+}
+
+/* Do not set min-height on .data-grid (table), it can distort header/table layout */
+
+/* Keep actions dropdown visible even with very few rows */
+.adminhtml-leispet-homepage-widget-index .admin__data-grid-wrap .data-grid-actions-cell,
+body[class*="leispet_homepage_widget"] .admin__data-grid-wrap .data-grid-actions-cell,
+body[class*="leispet-homepage-widget"] .admin__data-grid-wrap .data-grid-actions-cell,
+[data-index="leispet_homepage_widget_listing"] .admin__data-grid-wrap .data-grid-actions-cell,
+#leispet_homepage_widget_listing .admin__data-grid-wrap .data-grid-actions-cell {
+    position: relative;
+    overflow: visible;
+}
+
+.adminhtml-leispet-homepage-widget-index .admin__data-grid-wrap .data-grid-actions-cell .action-menu,
+body[class*="leispet_homepage_widget"] .admin__data-grid-wrap .data-grid-actions-cell .action-menu,
+body[class*="leispet-homepage-widget"] .admin__data-grid-wrap .data-grid-actions-cell .action-menu,
+[data-index="leispet_homepage_widget_listing"] .admin__data-grid-wrap .data-grid-actions-cell .action-menu,
+#leispet_homepage_widget_listing .admin__data-grid-wrap .data-grid-actions-cell .action-menu {
+    z-index: 900;
+}
+
+.admin__data-grid-outer-wrap[data-bind*="leispet_homepage_widget_listing"] .admin__data-grid-wrap .data-grid-actions-cell .action-menu {
+    top: 100%;
+    bottom: auto;
+    z-index: 9999;
+}

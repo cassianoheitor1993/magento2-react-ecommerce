@@ -1,0 +1,54 @@
+##
+# Magento 2 + PWA Studio — Production Docker Compose
+#
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+#
+# This override:
+#   - Removes dev-only services (mailcatcher)
+#   - Adds restart policies
+#   - Tightens resource limits
+#   - Removes exposed debug ports
+##
+
+services:
+  web:
+    restart: unless-stopped
+    ports:
+      - "80:8000"
+      - "443:8443"
+
+  phpfpm:
+    restart: unless-stopped
+    environment:
+      - MAGE_MODE=production
+
+  db:
+    restart: unless-stopped
+    ports: []  # Don't expose DB externally in production
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Set DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME:-magento}
+      MYSQL_USER: ${DB_USER:-magento}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD}
+
+  opensearch:
+    restart: unless-stopped
+    ports: []  # Don't expose search externally
+    environment:
+      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
+
+  redis:
+    restart: unless-stopped
+    ports: []  # Don't expose Redis externally
+
+  rabbitmq:
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+    # Remove management UI port in production
+
+  # Disable mailcatcher in production
+  mailcatcher:
+    profiles:
+      - dev-only

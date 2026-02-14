@@ -1,0 +1,110 @@
+.root {
+    padding: 0.75rem 1rem 0;
+}
+
+.categoryHeader {
+    margin-bottom: 0.75rem;
+}
+
+.title {
+    margin-bottom: 0.5rem;
+}
+
+.contentWrapper {
+    composes: w-full from global;
+    composes: lg_flex from global;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.sidebar {
+    composes: hidden from global;
+    composes: lg_flex from global;
+    composes: lg_self-start from global;
+    composes: lg_w-filterSidebarWidth from global;
+    padding-top: 0;
+}
+
+.sidebar :global([data-cy='FilterSidebar-root']) {
+    display: none !important;
+}
+
+.categoryContent {
+    composes: lg_flex-grow from global;
+    min-width: 0;
+}
+
+.categoryContent :global([data-cy='GalleryItem-root']) {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    padding: 0.6rem;
+    position: relative;
+}
+
+.categoryContent :global([data-cy='GalleryItem-root']:hover) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(15, 23, 42, 0.14);
+}
+
+.categoryContent :global([data-cy='GalleryItem-root'] [class*='item-imageContainer']) {
+    height: 220px;
+    border-radius: 0.55rem;
+    background: #f8fafc;
+    overflow: hidden;
+}
+
+/* ensure text bellow the images are center aligned*/
+.categoryContent :global([data-cy='GalleryItem-root'] [class*='item-name']) {
+    text-align: center;
+}
+
+.categoryContent :global([data-cy='GalleryItem-root'] [class*='item-price']) {
+    text-align: center;
+    color: #0f766e;
+    font-weight: 700;
+}
+
+/* ensure the actions container is also center aligned*/
+.categoryContent :global([data-cy='GalleryItem-root'] [class*='item-actions']) {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.categoryContent :global([data-cy='GalleryItem-root'] [class*='item-image']) {
+    width: 100%;
+    height: 300px;
+    background: #f8fafc;
+    object-fit: cover;
+    border-radius: 0.55rem;
+}
+
+/* render wishlist button on the top-right corner of the card */
+.categoryContent :global([data-cy='GalleryItem-root'] [class*='addToListButton']) {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 9999px;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    z-index: 2;
+}
+
+@media (max-width: 960px) {
+    .root {
+        padding: 0.5rem 0.75rem 0;
+    }
+
+    .categoryHeader {
+        margin-bottom: 0.5rem;
+    }
+}

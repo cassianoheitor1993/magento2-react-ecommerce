@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="admin-1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="leispet_homepage_widget_form"/>
+            <block class="LeisPet\Homepage\Block\Adminhtml\Widget\Edit\AiAssistant"
+                   name="leispet_homepage_widget_ai_assistant"
+                   template="LeisPet_Homepage::widget/edit/ai_assistant.phtml"
+                   after="-"/>
+        </referenceContainer>
+    </body>
+</page>

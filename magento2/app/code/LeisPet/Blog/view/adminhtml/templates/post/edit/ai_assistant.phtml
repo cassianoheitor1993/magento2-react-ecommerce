@@ -1,0 +1,91 @@
+<?php
+/** @var \LeisPet\Blog\Block\Adminhtml\Post\Edit\AiAssistant $block */
+?>
+<div id="leispet-blog-ai-assistant" data-config='<?= $block->escapeHtmlAttr($block->getConfigJson()) ?>'>
+    <div class="leispet-ai-status" id="leispet-ai-status" style="display:none;"></div>
+</div>
+
+<style>
+.leispet-ai-status {
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #dbe3ef;
+    background: #f8fbff;
+    color: #1f2a44;
+}
+.leispet-ai-status.is-loading {
+    border-color: #9ec5fe;
+    background: #eef5ff;
+}
+.leispet-ai-badge {
+    display: inline-block;
+    margin-left: 0.4rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    color: #085322;
+    background: #d5f5df;
+    vertical-align: middle;
+}
+.leispet-ai-badge.is-hidden {
+    display: none;
+}
+.leispet-ai-field-action {
+    margin-left: 0.5rem;
+}
+.leispet-ai-topic-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.8rem;
+    border: 1px solid #d8e1ec;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.leispet-ai-topic-table thead th {
+    background: #f5f8fc;
+    border-bottom: 1px solid #d8e1ec;
+    color: #2a3b57;
+    font-weight: 600;
+    padding: 0.65rem 0.7rem;
+    text-align: left;
+}
+.leispet-ai-sort {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+}
+.leispet-ai-sort:hover {
+    color: #0b5cad;
+}
+.leispet-ai-topic-row:nth-child(even) {
+    background: #fbfdff;
+}
+.leispet-ai-topic-cell {
+    border-bottom: 1px solid #ebf0f6;
+    padding: 0.65rem 0.7rem;
+    vertical-align: top;
+    color: #1f2a44;
+}
+.leispet-ai-topic-cell-select {
+    text-align: center;
+    width: 56px;
+}
+.leispet-ai-topic-title {
+    font-weight: 600;
+}
+.leispet-ai-topic-reason {
+    color: #3c4f6b;
+}
+</style>
+
+<script type="text/x-magento-init">
+{
+    "#leispet-blog-ai-assistant": {
+        "LeisPet_Blog/js/ai-blog-assistant": {}
+    }
+}
+</script>

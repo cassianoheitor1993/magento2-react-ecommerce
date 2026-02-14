@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="leispet_marketing" translate="label" sortOrder="920" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>LeisPet Marketing</label>
+            <tab>general</tab>
+            <resource>LeisPet_Marketing::config</resource>
+            <group id="ai" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>AI Campaign Suggestions</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable AI Suggestions</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="api_key" translate="label" type="obscure" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>AI API Key</label>
+                </field>
+                <field id="model" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Model</label>
+                    <comment>Example: deepseek-chat</comment>
+                </field>
+                <field id="base_url" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>API URL</label>
+                    <comment>Default: https://api.deepseek.com/v1/chat/completions</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

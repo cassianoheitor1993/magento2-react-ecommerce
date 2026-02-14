@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">leispet_homepage_widget_form.leispet_homepage_widget_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Homepage Widget</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+
+    <settings>
+        <buttons>
+            <button name="back" class="LeisPet\Homepage\Block\Adminhtml\Widget\Edit\BackButton"/>
+            <button name="save" class="LeisPet\Homepage\Block\Adminhtml\Widget\Edit\SaveButton"/>
+            <button name="delete" class="LeisPet\Homepage\Block\Adminhtml\Widget\Edit\DeleteButton"/>
+        </buttons>
+        <namespace>leispet_homepage_widget_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>leispet_homepage_widget_form.leispet_homepage_widget_form_data_source</dep>
+        </deps>
+    </settings>
+
+    <dataSource name="leispet_homepage_widget_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="leispet_homepage/widget/save"/>
+        </settings>
+        <dataProvider class="LeisPet\Homepage\Model\Widget\DataProvider"
+                      name="leispet_homepage_widget_form_data_source">
+            <settings>
+                <requestFieldName>widget_id</requestFieldName>
+                <primaryFieldName>widget_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="general">
+        <settings>
+            <label translate="true">General</label>
+        </settings>
+
+        <field name="widget_id" sortOrder="10" formElement="input">
+            <settings>
+                <label translate="true">ID</label>
+                <dataType>number</dataType>
+                <dataScope>widget_id</dataScope>
+                <disabled>true</disabled>
+                <visible>false</visible>
+            </settings>
+        </field>
+
+        <field name="widget_type" sortOrder="20" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">LeisPet\Homepage\Model\Config\Source\WidgetTypeOptions</item>
+            </argument>
+            <settings>
+                <label translate="true">Widget Type</label>
+                <dataType>text</dataType>
+                <dataScope>widget_type</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+
+        <field name="sort_order" sortOrder="30" formElement="input">
+            <settings>
+                <label translate="true">Sort Order</label>
+                <dataType>number</dataType>
+                <dataScope>sort_order</dataScope>
+            </settings>
+        </field>
+
+        <field name="is_active" sortOrder="40" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+            </argument>
+            <settings>
+                <label translate="true">Is Active</label>
+                <dataType>number</dataType>
+                <dataScope>is_active</dataScope>
+            </settings>
+        </field>
+
+        <field name="starts_at" sortOrder="50" formElement="input">
+            <settings>
+                <label translate="true">Visible From</label>
+                <dataType>text</dataType>
+                <dataScope>starts_at</dataScope>
+                <notice translate="true">Optional. Format: YYYY-MM-DD HH:MM:SS</notice>
+            </settings>
+        </field>
+
+        <field name="ends_at" sortOrder="60" formElement="input">
+            <settings>
+                <label translate="true">Visible Until</label>
+                <dataType>text</dataType>
+                <dataScope>ends_at</dataScope>
+                <notice translate="true">Optional. Format: YYYY-MM-DD HH:MM:SS</notice>
+            </settings>
+        </field>
+
+        <field name="config_json" sortOrder="70" formElement="hidden">
+            <settings>
+                <dataType>text</dataType>
+                <dataScope>config_json</dataScope>
+                <visible>true</visible>
+            </settings>
+        </field>
+    </fieldset>
+</form>

@@ -1,0 +1,40 @@
+#page\:main-container {
+    min-height: calc(100vh - 180px);
+}
+
+#page\:main-container .main-col {
+    min-height: inherit;
+}
+
+#page\:main-container .admin__data-grid-outer-wrap {
+    min-height: calc(100vh - 250px);
+    overflow: visible !important;
+}
+
+#page\:main-container .admin__data-grid-wrap,
+#page\:main-container .data-grid-container {
+    min-height: 55vh;
+}
+
+#page\:main-container .admin__data-grid-wrap {
+    overflow-x: auto;
+    overflow-y: visible !important;
+    padding-bottom: 180px;
+}
+
+#page\:main-container .data-grid-actions-cell .action-select-wrap {
+    position: relative;
+    z-index: 10;
+}
+
+#page\:main-container .data-grid-actions-cell .action-select-wrap._active .action-menu {
+    top: auto;
+    bottom: calc(100% + 4px);
+    z-index: 9999;
+}
+
+#page\:main-container .data-grid-actions-cell,
+#page\:main-container .data-grid-actions-cell .action-select-wrap,
+#page\:main-container .data-grid-actions-cell .action-menu {
+    overflow: visible !important;
+}

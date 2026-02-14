@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/consumer.xsd">
+    <consumer name="leispet.marketing.campaign.send"
+              queue="leispet.marketing.campaign.send"
+              connection="amqp"
+              handler="LeisPet\Marketing\Model\Queue\Consumer\CampaignSendConsumer::process"/>
+</config>

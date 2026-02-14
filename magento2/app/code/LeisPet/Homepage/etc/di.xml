@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="LeisPet\Homepage\Api\WidgetRepositoryInterface"
+                type="LeisPet\Homepage\Model\WidgetRepository"/>
+
+    <virtualType name="LeisPet\Homepage\Model\ResourceModel\Widget\Grid\ListingSearchResult"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">leispet_homepage_widget</argument>
+            <argument name="resourceModel" xsi:type="string">LeisPet\Homepage\Model\ResourceModel\Widget</argument>
+            <argument name="identifierName" xsi:type="string">widget_id</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="leispet_homepage_widget_listing_data_source" xsi:type="string">LeisPet\Homepage\Model\ResourceModel\Widget\Grid\ListingSearchResult</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

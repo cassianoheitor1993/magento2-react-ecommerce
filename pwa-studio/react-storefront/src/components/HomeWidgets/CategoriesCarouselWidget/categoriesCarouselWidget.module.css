@@ -1,0 +1,114 @@
+.root {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.85rem;
+    padding: 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.headerCta {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* ── Carousel wrapper with scroll buttons ─────────────── */
+
+.trackWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(9rem, 1fr);
+    gap: 0.6rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;       /* Firefox */
+    padding-bottom: 0.25rem;
+}
+
+.track::-webkit-scrollbar {
+    display: none;               /* Chrome / Safari */
+}
+
+.item {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.6rem;
+    padding: 0.7rem;
+    text-decoration: none;
+    color: #111827;
+    text-align: center;
+    background: #fafafa;
+    scroll-snap-align: start;
+    white-space: nowrap;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.item:hover {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 1px #2563eb;
+}
+
+/* ── Scroll buttons ───────────────────────────────────── */
+
+.scrollBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px solid #d1d5db;
+    background: #ffffffee;
+    color: #374151;
+    font-size: 1.25rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.15s, box-shadow 0.15s;
+    padding: 0;
+}
+
+.scrollBtn:hover {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.scrollBtnLeft {
+    left: 0.25rem;
+}
+
+.scrollBtnRight {
+    right: 0.25rem;
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="LeisPet_Homepage::homepage"
+             title="LeisPet Homepage"
+             module="LeisPet_Homepage"
+             sortOrder="95"
+             resource="LeisPet_Homepage::homepage"/>
+
+        <add id="LeisPet_Homepage::widgets"
+             title="Homepage Widgets"
+             module="LeisPet_Homepage"
+             sortOrder="10"
+             parent="LeisPet_Homepage::homepage"
+             action="leispet_homepage/widget/index"
+             resource="LeisPet_Homepage::widgets"/>
+    </menu>
+</config>

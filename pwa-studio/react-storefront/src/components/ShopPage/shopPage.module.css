@@ -1,0 +1,156 @@
+.root {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #111827;
+}
+
+.subtitle {
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+}
+
+.meta {
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 1rem;
+}
+
+.filtersCol {
+    align-self: start;
+    position: sticky;
+    top: 1rem;
+}
+
+.resultsCol {
+    min-width: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(15, 23, 42, 0.14);
+}
+
+.cardLink {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+.imageWrap {
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 220px;
+    border-radius: 0.55rem;
+    background: #f8fafc;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 0.5rem;
+}
+
+.imageNavBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.imageNavPrev {
+    left: 0.5rem;
+}
+
+.imageNavNext {
+    right: 0.5rem;
+}
+
+.name {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 0.75rem 0.25rem;
+}
+
+.price {
+    color: #0f766e;
+    font-weight: 700;
+    padding: 0 0.75rem 0.75rem;
+}
+
+.pagination {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.pageBtn {
+    border: 1px solid #d1d5db;
+    background: #fff;
+    border-radius: 0.375rem;
+    padding: 0.4rem 0.75rem;
+    cursor: pointer;
+}
+
+.pageBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.empty {
+    color: #6b7280;
+    padding: 1rem 0;
+}
+
+@media (max-width: 960px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .filtersCol {
+        position: static;
+    }
+}

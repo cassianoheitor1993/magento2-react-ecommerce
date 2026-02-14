@@ -1,0 +1,135 @@
+.root {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    margin: 0;
+}
+
+.resetButton {
+    border: none;
+    background: #1f6feb;
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+.card h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+}
+
+.value {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.badge {
+    margin-top: 0.5rem;
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+}
+
+.good {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.warn {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.panel {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+.counterList,
+.eventList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.counterList li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.eventList li {
+    border-bottom: 1px solid #f3f4f6;
+    padding: 0.6rem 0;
+}
+
+.eventList pre {
+    margin: 0.4rem 0 0;
+    background: #f9fafb;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    overflow: auto;
+    font-size: 0.75rem;
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .split {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .root {
+        padding: 1rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="leispet_blog_post" resource="default" engine="innodb" comment="LeisPet Blog Posts">
+        <column xsi:type="int" name="post_id" unsigned="true" nullable="false" identity="true" comment="Post ID"/>
+        <column xsi:type="varchar" name="title" length="255" nullable="false" comment="Title"/>
+        <column xsi:type="varchar" name="slug" length="255" nullable="true" comment="Slug"/>
+        <column xsi:type="text" name="excerpt" nullable="true" comment="Excerpt"/>
+        <column xsi:type="text" name="content" nullable="false" comment="Content"/>
+        <column xsi:type="varchar" name="author" length="120" nullable="false" default="LeisPet Team" comment="Author"/>
+        <column xsi:type="text" name="tags" nullable="true" comment="Tags CSV"/>
+        <column xsi:type="smallint" name="is_published" nullable="false" default="1" comment="Is Published"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="post_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="LEISPET_BLOG_POST_SLUG_UNQ">
+            <column name="slug"/>
+        </constraint>
+    </table>
+
+    <table name="leispet_blog_ai_job" resource="default" engine="innodb" comment="LeisPet Blog AI Jobs">
+        <column xsi:type="int" name="job_id" unsigned="true" nullable="false" identity="true" comment="Job ID"/>
+        <column xsi:type="int" name="post_id" unsigned="true" nullable="true" comment="Post ID"/>
+        <column xsi:type="varchar" name="job_type" length="50" nullable="false" comment="Job Type"/>
+        <column xsi:type="varchar" name="status" length="32" nullable="false" default="queued" comment="Status"/>
+        <column xsi:type="text" name="request_payload" nullable="true" comment="Request Payload JSON"/>
+        <column xsi:type="text" name="result_payload" nullable="true" comment="Result Payload JSON"/>
+        <column xsi:type="text" name="error_message" nullable="true" comment="Error Message"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Updated At"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="job_id"/>
+        </constraint>
+
+        <index referenceId="LEISPET_BLOG_AI_JOB_POST_ID" indexType="btree">
+            <column name="post_id"/>
+        </index>
+        <index referenceId="LEISPET_BLOG_AI_JOB_STATUS" indexType="btree">
+            <column name="status"/>
+        </index>
+    </table>
+</schema>

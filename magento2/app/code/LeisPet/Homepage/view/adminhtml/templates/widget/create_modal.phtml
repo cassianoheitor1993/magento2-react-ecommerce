@@ -1,0 +1,196 @@
+<?php
+/** @var \LeisPet\Homepage\Block\Adminhtml\Widget\CreateModal $block */
+?>
+<div id="leispet-homepage-create-widget" data-config='<?= $block->escapeHtmlAttr($block->getConfigJson()) ?>'>
+    <style>
+        #leispet-create-widget-modal .leispet-schedule-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        #leispet-create-widget-modal .leispet-schedule-fields {
+            border: 1px solid #d6d6d6;
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        #leispet_schedule_fields{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin__field.field{
+            margin-top: 0 !important;
+        }
+
+        .admin__legend{
+            margin-bottom: 0 !important;
+        }
+
+        .label.admin__field-label.scheduling{
+            text-align: left !important;
+            margin-top: 1rem !important;
+        }
+
+        #leispet-create-widget-modal .leispet-schedule-row .admin__field {
+            flex: 1 1 300px;
+            margin-right: 0;
+        }
+
+        #leispet-create-widget-modal .leispet-schedule-row .admin__field-label,
+        #leispet-create-widget-modal .leispet-schedule-row .admin__field-control {
+            width: 100%;
+            margin-left: 0;
+            float: none;
+        }
+
+        #leispet-create-widget-modal .leispet-schedule-row .admin__field-control {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+        }
+
+        #leispet-create-widget-modal .leispet-schedule-row .admin__control-text {
+            width: auto;
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        #leispet-create-widget-modal .admin__field-control .ui-datepicker-trigger {
+            position: static !important;
+            margin-left: 6px;
+            flex: 0 0 auto;
+            white-space: nowrap;
+        }
+
+        #leispet-create-widget-modal .admin__field-control .ui-datepicker-trigger span {
+            pointer-events: none;
+        }
+
+        @media (max-width: 1024px) {
+            #leispet-create-widget-modal .leispet-schedule-row {
+                display: block;
+            }
+
+            #leispet-create-widget-modal .leispet-schedule-row .admin__field {
+                margin-bottom: 12px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="<?= $block->getViewFileUrl('LeisPet_Homepage::css/widget-config-editor.css') ?>" />
+
+    <button type="button" class="action-primary" id="leispet-open-create-widget-modal">
+        <span><?= $block->escapeHtml(__('Add Widget')) ?></span>
+    </button>
+
+    <div id="leispet-create-widget-modal" style="display:none;">
+        <div id="leispet-widget-modal-errors" class="message message-error" style="display:none; margin-bottom: 12px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+                <div id="leispet-widget-modal-errors-content"></div>
+                <button id="leispet-widget-modal-errors-close" type="button" class="action-secondary">
+                    <span><?= $block->escapeHtml(__('Dismiss')) ?></span>
+                </button>
+            </div>
+        </div>
+
+        <div id="leispet-widget-modal-success" class="message message-success" style="display:none; margin-bottom: 12px;"></div>
+
+        <form id="leispet-create-widget-form" method="post">
+            <input type="hidden" name="form_key" value="<?= $block->escapeHtmlAttr($block->getFormKey()) ?>" />
+            <input type="hidden" name="widget_id" id="leispet_widget_id" value="" />
+            <input type="hidden" name="config_json" id="leispet_config_json" value="" />
+
+            <div class="admin__field field">
+                <label class="label admin__field-label" for="leispet_widget_title"><span><?= $block->escapeHtml(__('Title')) ?></span></label>
+                <div class="control admin__field-control">
+                    <input class="admin__control-text" type="text" name="title" id="leispet_widget_title" placeholder="<?= $block->escapeHtmlAttr(__('Auto-generated from widget type if left empty')) ?>" />
+                </div>
+            </div>
+
+            <div class="admin__field field">
+                <label class="label admin__field-label" for="leispet_widget_type"><span><?= $block->escapeHtml(__('Widget Type')) ?></span></label>
+                <div class="control admin__field-control">
+                    <select class="admin__control-select" name="widget_type" id="leispet_widget_type" required>
+                        <option value=""><?= $block->escapeHtml(__('Select widget type')) ?></option>
+                        <option value="trust_badges"><?= $block->escapeHtml(__('Trust Badges')) ?></option>
+                        <option value="testimonials"><?= $block->escapeHtml(__('Testimonials')) ?></option>
+                        <option value="cta"><?= $block->escapeHtml(__('CTA')) ?></option>
+                        <option value="categories_carousel"><?= $block->escapeHtml(__('Categories Carousel')) ?></option>
+                        <option value="newsletter"><?= $block->escapeHtml(__('Newsletter')) ?></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="admin__field field">
+                <label class="label admin__field-label" for="leispet_widget_context"><span><?= $block->escapeHtml(__('Widget Context for AI')) ?></span></label>
+                <div class="control admin__field-control">
+                    <textarea class="admin__control-textarea" name="context" id="leispet_widget_context" rows="4" placeholder="<?= $block->escapeHtmlAttr(__('Describe goal, audience, tone, and campaign context...')) ?>"></textarea>
+                    <p class="note"><span><?= $block->escapeHtml(__('Generate content first. Scheduling will be enabled only after successful generation.')) ?></span></p>
+                    <button type="button" class="action-secondary" id="leispet_generate_widget_content">
+                        <span><?= $block->escapeHtml(__('Generate Content with AI')) ?></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="admin__field field" id="leispet_config_editor_wrapper" style="display:none;">
+                <label class="label admin__field-label"><span><?= $block->escapeHtml(__('Widget Content')) ?></span></label>
+                <div class="control admin__field-control">
+                    <div id="leispet_config_editor"></div>
+                </div>
+            </div>
+
+            <div id="leispet_schedule_fields" class="admin__field field" disabled>
+                <label class="label admin__field-label scheduling" for="leispet_starts_at">
+                    <span><?= $block->escapeHtml(__('Scheduling')) ?></span>
+                </label>
+                <fieldset class="leispet-schedule-fields">
+                    <div id="leispet-schedule-validation-hint" class="message" style="display:none; margin-bottom: 10px;"></div>
+
+                    <div class="leispet-schedule-row">
+                        <div class="admin__field field">
+                            <label class="label admin__field-label" for="leispet_starts_at"><span><?= $block->escapeHtml(__('Visible From')) ?></span></label>
+                            <div class="control admin__field-control">
+                                <input class="admin__control-text" type="text" name="starts_at" id="leispet_starts_at" placeholder="YYYY-MM-DD HH:MM:SS" />
+                            </div>
+                        </div>
+
+                        <div class="admin__field field">
+                            <label class="label admin__field-label" for="leispet_ends_at"><span><?= $block->escapeHtml(__('Visible Until')) ?></span></label>
+                            <div class="control admin__field-control">
+                                <input class="admin__control-text" type="text" name="ends_at" id="leispet_ends_at" placeholder="YYYY-MM-DD HH:MM:SS" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin__field field">
+                        <label class="label admin__field-label" for="leispet_is_active"><span><?= $block->escapeHtml(__('Activate Now')) ?></span></label>
+                        <div class="control admin__field-control">
+                            <select class="admin__control-select" name="is_active" id="leispet_is_active">
+                                <option value="1"><?= $block->escapeHtml(__('Yes')) ?></option>
+                                <option value="0"><?= $block->escapeHtml(__('No')) ?></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin__field field">
+                        <label class="label admin__field-label" for="leispet_sort_order"><span><?= $block->escapeHtml(__('Sort Order')) ?></span></label>
+                        <div class="control admin__field-control">
+                            <input class="admin__control-text" type="number" name="sort_order" id="leispet_sort_order" value="0" min="0" />
+                            <p class="note"><span><?= $block->escapeHtml(__('0 = auto-assign next available position')) ?></span></p>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "#leispet-homepage-create-widget": {
+        "LeisPet_Homepage/js/widget-create-modal": {}
+    }
+}
+</script>

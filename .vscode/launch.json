@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend: Docker Up + Cache Flush",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "cd /home/cmedeiros/Documents/Cassiano-Portfolio/PHP-Projects/magento2_ecomm && docker compose up -d && ./magento.sh cache:flush"
+    },
+    {
+      "name": "Frontend: npm run watch",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "cd /home/cmedeiros/Documents/Cassiano-Portfolio/PHP-Projects/magento2_ecomm/pwa-studio/react-storefront && npm run watch"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack: Backend + Frontend Watch",
+      "configurations": [
+        "Backend: Docker Up + Cache Flush",
+        "Frontend: npm run watch"
+      ],
+      "stopAll": false
+    }
+  ]
+}

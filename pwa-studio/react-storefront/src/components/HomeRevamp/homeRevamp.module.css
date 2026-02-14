@@ -1,0 +1,201 @@
+.root {
+    margin-bottom: 2rem;
+    overflow-x: hidden;
+}
+
+.widgetsContainer {
+    box-sizing: border-box;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+}
+
+@media (min-width: 480px) {
+    .widgetsContainer {
+        padding: 0 2rem;
+    }
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at top right, #c4b5fd, #7c3aed 50%, #4c1d95);
+    color: #fff;
+    min-height: 25rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.slide {
+    display: none;
+    padding: 2rem 1rem;
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+@media (min-width: 480px) {
+    .slide {
+        padding: 2rem;
+    }
+}
+
+.slideActive {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 0.75rem;
+}
+
+.title {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.subtitle {
+    margin: 0.8rem 0 1.2rem;
+    max-width: 42rem;
+    opacity: 0.95;
+}
+
+.primaryCta,
+.secondaryCta,
+.quickLinkButton {
+    border: none;
+    border-radius: 0.65rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.primaryCta {
+    background: #fff;
+    color: #4c1d95;
+    padding: 0.7rem 1rem;
+}
+
+.dots {
+    position: absolute;
+    bottom: 0.9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1440px;
+    padding-left: 1rem;
+    display: flex;
+    gap: 0.45rem;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+@media (min-width: 480px) {
+    .dots {
+        padding-left: 2rem;
+    }
+}
+
+.dot {
+    pointer-events: auto;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+}
+
+.dotActive {
+    background: #fff;
+}
+
+.quickLinks {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.7rem;
+    margin: 1.2rem 0;
+}
+
+.quickLinkButton {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    padding: 0.7rem;
+}
+
+.conversionSection {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+.conversionCard {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.85rem;
+    padding: 1rem;
+}
+
+.conversionCard h3 {
+    margin: 0 0 0.5rem;
+}
+
+.conversionCard p {
+    margin: 0 0 0.8rem;
+    color: #374151;
+}
+
+.secondaryCta {
+    background: #111827;
+    color: #fff;
+    padding: 0.55rem 0.8rem;
+}
+
+@media (max-width: 900px) {
+    .quickLinks {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .conversionSection {
+        grid-template-columns: 1fr;
+    }
+
+    .title {
+        font-size: 1.55rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero {
+        min-height: 16rem;
+    }
+
+    .quickLinks {
+        grid-template-columns: 1fr 1fr;
+    }
+}

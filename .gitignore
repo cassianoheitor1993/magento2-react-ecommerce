@@ -1,0 +1,98 @@
+# =============================================================================
+#  Magento 2 + PWA Studio Monorepo
+# =============================================================================
+
+# ─── OS / IDE ────────────────────────────────────────────────────────────────
+*.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Keep VS Code workspace config (launch.json, etc.)
+# .vscode/
+
+# ─── Secrets (NEVER commit) ─────────────────────────────────────────────────
+auth.json
+magento2/auth.json
+magento2/app/etc/env.php
+
+# ─── Magento 2 — installed via Composer (reproducible) ──────────────────────
+magento2/vendor/
+magento2/generated/
+
+# ─── Magento 2 — core files (installed by setup.sh, not custom code) ────────
+# We only commit: app/code/, app/design/, app/etc/config.php, composer.json/lock
+magento2/bin/
+magento2/dev/
+magento2/lib/
+magento2/phpserver/
+magento2/setup/
+magento2/app/autoload.php
+magento2/app/bootstrap.php
+magento2/app/etc/NonComposerComponentRegistration.php
+magento2/app/etc/registration_globlist.php
+magento2/app/etc/vendor_path.php
+magento2/*.txt
+magento2/*.md
+magento2/*.sample
+magento2/Gruntfile.js.sample
+magento2/grunt-config.json.sample
+magento2/package.json.sample
+magento2/nginx.conf.sample
+magento2/auth.json.sample
+
+# ─── Magento 2 — runtime / cache ────────────────────────────────────────────
+magento2/var/cache/
+magento2/var/page_cache/
+magento2/var/session/
+magento2/var/tmp/
+magento2/var/view_preprocessed/
+magento2/var/composer_home/
+magento2/var/log/
+magento2/var/report/
+magento2/var/export/
+magento2/var/import/
+magento2/var/importexport/
+magento2/var/backups/
+
+# ─── Magento 2 — generated static assets ────────────────────────────────────
+magento2/pub/static/frontend/
+magento2/pub/static/adminhtml/
+magento2/pub/static/deployed_version.txt
+!magento2/pub/static/.htaccess
+
+# ─── Magento 2 — pub (core entry points, installed by Composer) ─────────────
+magento2/pub/cron.php
+magento2/pub/get.php
+magento2/pub/health_check.php
+magento2/pub/index.php
+magento2/pub/static.php
+magento2/pub/errors/
+magento2/pub/opt/
+
+# ─── Magento 2 — media uploads ──────────────────────────────────────────────
+magento2/pub/media/catalog/
+magento2/pub/media/captcha/
+magento2/pub/media/customer/
+magento2/pub/media/downloadable/
+magento2/pub/media/import/
+magento2/pub/media/theme/
+magento2/pub/media/tmp/
+magento2/pub/media/wysiwyg/
+!magento2/pub/media/.htaccess
+
+# ─── PWA Studio — dependencies (reproducible via npm install) ────────────────
+pwa-studio/react-storefront/node_modules/
+pwa-studio/react-storefront/dist/
+pwa-studio/react-storefront/.cache/
+
+# ─── PWA Studio — env (local dev settings, use .env.example as template) ────
+pwa-studio/react-storefront/.env
+
+# ─── PWA Studio — SSL certs (auto-generated) ────────────────────────────────
+pwa-studio/react-storefront/.ssl/
+
+# ─── Docker — persistent volumes ────────────────────────────────────────────
+db-data/
+opensearch-data/

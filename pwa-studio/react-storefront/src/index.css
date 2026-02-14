@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent horizontal scrollbar from full-bleed sections (e.g. hero) */
+html,
+body {
+    overflow-x: clip;
+}

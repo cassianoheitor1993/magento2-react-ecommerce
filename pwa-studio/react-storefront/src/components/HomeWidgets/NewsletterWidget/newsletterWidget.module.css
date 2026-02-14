@@ -1,0 +1,51 @@
+.root {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.85rem;
+    padding: 1rem;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.description {
+    margin: 0.5rem 0 0;
+    color: #4b5563;
+}
+
+.form {
+    margin-top: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.6rem;
+}
+
+.input {
+    height: 2.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 0 0.75rem;
+}
+
+.button {
+    border: none;
+    border-radius: 0.5rem;
+    background: #111827;
+    color: #fff;
+    font-weight: 600;
+    padding: 0 1rem;
+}
+
+.disclaimer {
+    margin: 0.6rem 0 0;
+    font-size: 0.82rem;
+    color: #6b7280;
+}
+
+@media (max-width: 640px) {
+    .form {
+        grid-template-columns: 1fr;
+    }
+}

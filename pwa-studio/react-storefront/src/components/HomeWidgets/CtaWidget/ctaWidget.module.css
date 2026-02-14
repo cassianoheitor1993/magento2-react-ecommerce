@@ -1,0 +1,62 @@
+.root {
+    border-radius: 0.85rem;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, #111827, #1f2937);
+    color: #fff;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.headline {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.eyebrow {
+    margin: 0 0 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.72rem;
+    color: #cbd5e1;
+}
+
+.subheadline {
+    margin: 0.45rem 0 0;
+    color: #dbeafe;
+    font-weight: 600;
+}
+
+.description {
+    margin: 0.6rem 0 0;
+    color: #e5e7eb;
+}
+
+.disclaimer {
+    margin: 0.7rem 0 0;
+    color: #cbd5e1;
+    font-size: 0.78rem;
+}
+
+.actions {
+    display: flex;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.primary,
+.secondary {
+    text-decoration: none;
+    padding: 0.55rem 0.9rem;
+    border-radius: 0.55rem;
+    font-weight: 600;
+}
+
+.primary {
+    background: #fff;
+    color: #111827;
+}
+
+.secondary {
+    border: 1px solid #9ca3af;
+    color: #fff;
+}

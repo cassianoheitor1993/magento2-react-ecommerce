@@ -1,0 +1,248 @@
+.root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 1rem 3rem;
+}
+
+.title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    color: #0f172a;
+}
+
+.subtitle {
+    text-align: left;
+    font-size: 1rem;
+    color: #475569;
+    margin-bottom: 1.5rem;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: minmax(250px, 320px) 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.sidebar {
+    position: sticky;
+    top: 1rem;
+}
+
+.sidebarCard {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #fff;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.sidebarTitle {
+    margin: 0 0 0.7rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.searchInput {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 0.55rem 0.7rem;
+    font-size: 0.95rem;
+}
+
+.topicList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.topicButton {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #dbe4ee;
+    border-radius: 8px;
+    background: #fff;
+    color: #334155;
+    font-size: 0.88rem;
+    margin-bottom: 0.5rem;
+    padding: 0.45rem 0.6rem;
+    cursor: pointer;
+}
+
+.topicButtonActive {
+    border-color: #0f766e;
+    color: #0f766e;
+    background: #f0fdfa;
+}
+
+.postsArea {
+    min-width: 0;
+}
+
+.postsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+}
+
+.postCard {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.postCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.postTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.45rem;
+    color: #0f172a;
+}
+
+.postTitleLink {
+    color: inherit;
+    text-decoration: none;
+}
+
+.postTitleLink:hover {
+    color: #0f766e;
+}
+
+.postMeta {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-bottom: 0.7rem;
+}
+
+.postExcerpt {
+    background: #f8fbff;
+    border-left: 3px solid #0f766e;
+    border-radius: 4px;
+    color: #334155;
+    font-size: 0.92rem;
+    margin-bottom: 0.75rem;
+    padding: 0.65rem;
+}
+
+.postTags {
+    color: #0f766e;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin: 0.2rem 0 0.7rem;
+}
+
+.readMore {
+    color: #0f766e;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.readMore:hover {
+    text-decoration: underline;
+}
+
+.pagination {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.pageButton {
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    border-radius: 8px;
+    padding: 0.4rem 0.65rem;
+    cursor: pointer;
+}
+
+.pageButtonActive {
+    border-color: #0f766e;
+    color: #fff;
+    background: #0f766e;
+}
+
+.postDetail {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #fff;
+    padding: 1.3rem;
+}
+
+.detailTitle {
+    margin: 0.2rem 0 0.5rem;
+    font-size: 2rem;
+    color: #0f172a;
+}
+
+.postRichContent {
+    color: #1f2937;
+    line-height: 1.72;
+    font-size: 1rem;
+}
+
+.postRichContent h2,
+.postRichContent h3,
+.postRichContent h4 {
+    margin: 1.2rem 0 0.55rem;
+    color: #0f172a;
+}
+
+.postRichContent img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 0.9rem 0;
+}
+
+.postRichContent ul,
+.postRichContent ol {
+    margin: 0.5rem 0 0.95rem 1.25rem;
+}
+
+.backRow {
+    margin-bottom: 0.75rem;
+}
+
+.backLink {
+    color: #0f766e;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.backLink:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .postsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .detailTitle {
+        font-size: 1.5rem;
+    }
+}

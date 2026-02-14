@@ -1,0 +1,10 @@
+<?php /** @var \LeisPet\Blog\Block\Blog $block */ ?>
+<h1>LeisPet Blog</h1>
+<ul>
+    <?php foreach ($block->getPosts() as $post): ?>
+        <li>
+            <strong><?= $block->escapeHtml($post->getTitle()) ?></strong>
+            <p><?= $block->escapeHtml($post->getContent()) ?></p>
+        </li>
+    <?php endforeach; ?>
+</ul>

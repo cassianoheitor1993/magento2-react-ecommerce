@@ -1,0 +1,30 @@
+type Query {
+    homePageLayout(pageCode: String = "home"): HomePageLayoutOutput
+    @resolver(class: "LeisPet\\Homepage\\Model\\Resolver\\HomePageLayout")
+    @doc(description: "Get homepage static shell and dynamic middle widgets")
+}
+
+type HomePageLayoutOutput {
+    page_code: String @doc(description: "Requested page code")
+    static_sections: [HomeStaticSection!] @doc(description: "Fixed non-orderable sections")
+    middle_widgets: [HomeWidget!] @doc(description: "Orderable dynamic middle widgets")
+}
+
+type HomeStaticSection {
+    code: String @doc(description: "Section code")
+    is_enabled: Boolean @doc(description: "Section visibility")
+    is_orderable: Boolean @doc(description: "Whether section is orderable")
+}
+
+type HomeWidget {
+    widget_id: Int @doc(description: "Widget ID")
+    widget_type: String @doc(description: "Widget type")
+    title: String @doc(description: "Widget title")
+    page_code: String @doc(description: "Page code")
+    placement: String @doc(description: "Placement")
+    is_active: Boolean @doc(description: "Is active")
+    sort_order: Int @doc(description: "Sort order")
+    starts_at: String @doc(description: "Visibility start datetime")
+    ends_at: String @doc(description: "Visibility end datetime")
+    config_json: String @doc(description: "Validated widget config JSON")
+}
